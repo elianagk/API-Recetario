@@ -15,9 +15,14 @@ const getUsers = async (req, res)=> {
 }
 
 const getRecetas = async (req, res)=> {
-    const response = await pool.query('SELECT * FROM receta');
+    const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta');
     res.json(response.rows);
  }
+ const getReceta = async (req, res)=> {
+   const id = req.params.id_receta;
+   const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta WHERE id_receta = $1', [id]);
+   res.json(response.rows);
+}
 
  const getIngredientes = async (req, res)=> {
     const response = await pool.query('SELECT * FROM ingrediente');
@@ -30,14 +35,35 @@ const getRecetas = async (req, res)=> {
  }
 
  const getRecetaCategoria = async (req, res)=> {
-    const response = await pool.query('SELECT * FROM receta_categoria');
+   const id = req.params.id_receta;
+    const response = await pool.query('SELECT * FROM receta_categoria WHERE id_receta=$1',[id]);
     res.json(response.rows);
  }
 
  const getRecetaIngrediente = async (req, res)=> {
-    const response = await pool.query('SELECT * FROM receta_ingredientes');
+    const id = req.params.id_receta;
+    const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_receta=$1',[id]);
     res.json(response.rows);
  }
+
+ const getIngredienteReceta = async (req, res)=> {
+   const id = req.params.id_ingrediente;
+   const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_ingrediente=$1',[id]);
+   res.json(response.rows);
+}
+
+ const getImageReceta =  async (req, res) => {
+   const fs = require('fs');
+   const response = await pool.query("SELECT encode(image,'base64') FROM receta where id_receta = $1", [req.params.id_receta]);
+   var respuesta=Buffer.from(response.rows[0].encode,'base64');
+   var rta=respuesta.toString('utf-8');
+   fs.writeFileSync('image.jpg', rta, function(err) {
+       console.log('File created');
+   });
+   const mimeType = 'image/png';
+
+   res.send(`<img src="data:${mimeType};base64,${rta}"/>`);
+};
 
 //Especificos
 //Recetas por ingrediente
@@ -54,5 +80,8 @@ module.exports = {
     getCategoria,
     getIngredientes,
     getRecetaCategoria,
-    getRecetaIngrediente
+    getRecetaIngrediente,
+    getImageReceta,
+    getIngredienteReceta,
+    getReceta
 }
