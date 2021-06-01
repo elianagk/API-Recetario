@@ -29,10 +29,21 @@ const getRecetas = async (req, res)=> {
     res.json(response.rows);
  }
 
- const getCategoria = async (req, res)=> {
+ const getIngrediente = async (req, res)=> {
+   const id = req.params.id_ingrediente;
+   const response = await pool.query('SELECT * FROM ingrediente WHERE id_ingrediente=$1',[id]);
+   res.json(response.rows);
+}
+
+ const getCategorias = async (req, res)=> {
     const response = await pool.query('SELECT * FROM categoria');
     res.json(response.rows);
  }
+ const getCategoria = async (req, res)=> {
+   const id = req.params.id_categoria;
+   const response = await pool.query('SELECT * FROM categoria WHERE id_categoria=$1',[id]);
+   res.json(response.rows);
+}
 
  const getRecetaCategoria = async (req, res)=> {
    const id = req.params.id_receta;
@@ -65,23 +76,20 @@ const getRecetas = async (req, res)=> {
    res.send(`<img src="data:${mimeType};base64,${rta}"/>`);
 };
 
-//Especificos
-//Recetas por ingrediente
-//Recetas por categoria
-//Receta por nombre - id
-//Categoria por nombre - id
-//ingrediente por id - nombre
+
 
 
 
 module.exports = {
     getUsers,
     getRecetas,
-    getCategoria,
+    getCategorias,
     getIngredientes,
     getRecetaCategoria,
     getRecetaIngrediente,
     getImageReceta,
     getIngredienteReceta,
-    getReceta
+    getReceta,
+    getIngrediente,
+    getCategoria
 }
