@@ -51,6 +51,14 @@ const getRecetas = async (req, res)=> {
     res.json(response.rows);
  }
 
+ const getCategoriaReceta = async (req, res)=> {
+   const id = req.params.id_categoria;
+    const response = await pool.query('SELECT * FROM receta_categoria WHERE id_categoria=$1',[id]);
+    res.json(response.rows);
+ }
+
+
+
  const getRecetaIngrediente = async (req, res)=> {
     const id = req.params.id_receta;
     const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_receta=$1',[id]);
@@ -91,5 +99,6 @@ module.exports = {
     getIngredienteReceta,
     getReceta,
     getIngrediente,
-    getCategoria
+    getCategoria,
+    getCategoriaReceta
 }
