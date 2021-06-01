@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "bddba083-1b62-4c35-ae49-e1feb5698707",
+		"name": "ServicioWeb-Nodejs",
+		"description": "Colección de prueba del Proyecto Servicio Web",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Recetas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/recetas",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"recetas"
+					]
+				},
+				"description": "Obtiene todas las recetas"
+			},
+			"response": []
+		},
+		{
+			"name": "Receta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/receta/5",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"receta",
+						"5"
+					]
+				},
+				"description": "Obtiene una receta en particular"
+			},
+			"response": []
+		},
+		{
+			"name": "ImagenReceta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/imagen/5",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"imagen",
+						"5"
+					]
+				},
+				"description": "Obtiene la imagen de una receta en particular."
+			},
+			"response": []
+		},
+		{
+			"name": "Categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/categorias",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categorias"
+					]
+				},
+				"description": "Obtiene todas las categorias"
+			},
+			"response": []
+		},
+		{
+			"name": "Categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/categoria/1",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categoria",
+						"1"
+					]
+				},
+				"description": "Obtiene una categoria en particular"
+			},
+			"response": []
+		},
+		{
+			"name": "Ingredientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/ingredientes",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"ingredientes"
+					]
+				},
+				"description": "Obtiene todos los ingredientes"
+			},
+			"response": []
+		},
+		{
+			"name": "Receta-Ingredientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/recetaingredientes/5",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"recetaingredientes",
+						"5"
+					]
+				},
+				"description": "Obtiene los ingredientes de una receta en particular."
+			},
+			"response": []
+		},
+		{
+			"name": "Receta-Categorias",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/recetacategoria/5",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"recetacategoria",
+						"5"
+					]
+				},
+				"description": "Obtiene las categorias asociadas a una receta en particular."
+			},
+			"response": []
+		},
+		{
+			"name": "Ingrediente-Recetas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/ingredientesreceta/5",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"ingredientesreceta",
+						"5"
+					]
+				},
+				"description": "Obtiene los id de las recetas asociadas a un ingrediente en particular."
+			},
+			"response": []
+		},
+		{
+			"name": "Categoria-Recetas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://iawek-servicio-web.herokuapp.com/categoriareceta/1",
+					"protocol": "https",
+					"host": [
+						"iawek-servicio-web",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"categoriareceta",
+						"1"
+					]
+				},
+				"description": "Obtiene los id de las recetas asociadas a una categoria en particular."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
