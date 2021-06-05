@@ -10,78 +10,182 @@ const pool = new Pool({
 
 //generales
 const getUsers = async (req, res)=> {
-   const response = await pool.query('SELECT * FROM users');
-   res.json(response.rows);
+   try{
+      const response = await pool.query('SELECT * FROM users');
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
 }
 
 const getRecetas = async (req, res)=> {
-    const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta');
-    res.json(response.rows);
+   const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta');
+   res.json(response.rows);
+   
  }
  const getReceta = async (req, res)=> {
+   try{
    const id = req.params.id_receta;
    const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta WHERE id_receta = $1', [id]);
    res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+}
+
 }
 
  const getIngredientes = async (req, res)=> {
-    const response = await pool.query('SELECT * FROM ingrediente');
-    res.json(response.rows);
+    try{
+      const response = await pool.query('SELECT * FROM ingrediente');
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
  }
 
  const getIngrediente = async (req, res)=> {
-   const id = req.params.id_ingrediente;
-   const response = await pool.query('SELECT * FROM ingrediente WHERE id_ingrediente=$1',[id]);
-   res.json(response.rows);
+   try{
+      const id = req.params.id_ingrediente;
+      const response = await pool.query('SELECT * FROM ingrediente WHERE id_ingrediente=$1',[id]);
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
+   
 }
 
  const getCategorias = async (req, res)=> {
+    try{
     const response = await pool.query('SELECT * FROM categoria');
     res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
  }
  const getCategoria = async (req, res)=> {
-   const id = req.params.id_categoria;
-   const response = await pool.query('SELECT * FROM categoria WHERE id_categoria=$1',[id]);
-   res.json(response.rows);
+    try{
+      const id = req.params.id_categoria;
+      const response = await pool.query('SELECT * FROM categoria WHERE id_categoria=$1',[id]);
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
+
 }
 
  const getRecetaCategoria = async (req, res)=> {
-   const id = req.params.id_receta;
-    const response = await pool.query('SELECT * FROM receta_categoria WHERE id_receta=$1',[id]);
-    res.json(response.rows);
+   try{
+      const id = req.params.id_receta;
+      const response = await pool.query('SELECT * FROM receta_categoria WHERE id_receta=$1',[id]);
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
  }
 
  const getCategoriaReceta = async (req, res)=> {
-   const id = req.params.id_categoria;
-    const response = await pool.query('SELECT * FROM receta_categoria WHERE id_categoria=$1',[id]);
-    res.json(response.rows);
+    try{
+      const id = req.params.id_categoria;
+      const response = await pool.query('SELECT * FROM receta_categoria WHERE id_categoria=$1',[id]);
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
  }
 
 
 
  const getRecetaIngrediente = async (req, res)=> {
-    const id = req.params.id_receta;
-    const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_receta=$1',[id]);
-    res.json(response.rows);
+    try{
+      const id = req.params.id_receta;
+      const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_receta=$1',[id]);
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
  }
 
  const getIngredienteReceta = async (req, res)=> {
-   const id = req.params.id_ingrediente;
-   const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_ingrediente=$1',[id]);
-   res.json(response.rows);
+   try{
+      const id = req.params.id_ingrediente;
+      const response = await pool.query('SELECT * FROM receta_ingredientes WHERE id_ingrediente=$1',[id]);
+      res.json(response.rows);
+   }catch(err){
+      res.status(400).send({
+         "name": "Sintaxis incorrecta",
+         "message": "La sintaxis que uso no es correcta.",
+         "code": 0,
+         "status": 405
+      });
+   }
 }
 
  const getImageReceta =  async (req, res) => {
-   const fs = require('fs');
-   const response = await pool.query("SELECT encode(image,'base64') FROM receta where id_receta = $1", [req.params.id_receta]);
-   var respuesta=Buffer.from(response.rows[0].encode,'base64');
-   var rta=respuesta.toString('utf-8');
-   fs.writeFileSync('image.jpg', rta, function(err) {
-       console.log('File created');
-   });
-   const mimeType = 'image/png';
+    try{
+      const fs = require('fs');
+      const response = await pool.query("SELECT encode(image,'base64') FROM receta where id_receta = $1", [req.params.id_receta]);
+      var respuesta=Buffer.from(response.rows[0].encode,'base64');
+      var rta=respuesta.toString('utf-8');
+      fs.writeFileSync('image.jpg', rta, function(err) {
+         console.log('File created');
+      });
+      const mimeType = 'image/png';
 
-   res.send(`<img src="data:${mimeType};base64,${rta}"/>`);
+      res.send(rta);
+   }catch(err){
+      res.status(404).send({
+          "name": "Not Found Exception",
+          "message": "The requested resource was not found.",
+          "code": 0,
+          "status": 404
+      });
+  }
+   
 };
 
 
