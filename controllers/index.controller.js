@@ -45,17 +45,8 @@ const getRecetas = async (req, res)=> {
 }
 
  const getIngredientes = async (req, res)=> {
-    try{
-      const response = await pool.query('SELECT * FROM ingrediente');
-      res.json(response.rows);
-   }catch(err){
-      res.status(400).send({
-         "name": "Sintaxis incorrecta",
-         "message": "La sintaxis que uso no es correcta.",
-         "code": 0,
-         "status": 405
-      });
-   }
+   const response = await pool.query('SELECT * FROM ingrediente');
+   res.json(response.rows);
  }
 
  const getIngrediente = async (req, res)=> {
@@ -75,17 +66,8 @@ const getRecetas = async (req, res)=> {
 }
 
  const getCategorias = async (req, res)=> {
-    try{
-    const response = await pool.query('SELECT * FROM categoria');
-    res.json(response.rows);
-   }catch(err){
-      res.status(400).send({
-         "name": "Sintaxis incorrecta",
-         "message": "La sintaxis que uso no es correcta.",
-         "code": 0,
-         "status": 405
-      });
-   }
+   const response = await pool.query('SELECT * FROM categoria');
+   res.json(response.rows);
  }
  const getCategoria = async (req, res)=> {
     try{
