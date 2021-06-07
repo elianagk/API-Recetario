@@ -18,7 +18,7 @@ const getUsers = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
 }
@@ -38,7 +38,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
 }
 
@@ -59,7 +59,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
    
@@ -79,7 +79,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
 
@@ -95,7 +95,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
  }
@@ -110,7 +110,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
  }
@@ -127,7 +127,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
  }
@@ -142,7 +142,7 @@ const getRecetas = async (req, res)=> {
          "name": "Sintaxis incorrecta",
          "message": "La sintaxis que uso no es correcta.",
          "code": 0,
-         "status": 405
+         "status": 400
       });
    }
 }

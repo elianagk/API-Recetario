@@ -1,21 +1,41 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 4000
+const express = require('express');
+const PORT = process.env.PORT || 5000
 const app = express();
 
-// express()
-//   .use(express.static(path.join(__dirname, 'public')))
-//   .set('views', path.join(__dirname, 'views'))
-//   .set('view engine', 'ejs')
-//   .get('/', (req, res) => res.render('pages/index'))
-//   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.use(express.json());
+app.use(require('./routes/index'));
 
-  //routes
- app.use(require('./routes/index'));
+app.listen(PORT);
 
- //middleware
- app.use(express.json());
- app.use(express.urlencoded({extended:false}));
+// Swagger
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
- app.listen(PORT);
+const options = {
+    definition: {
+      openapi: "3.0.0",
+      info: {
+        title: "Frozen sea Recipes API",
+        version: "1.0.0",
+        description:
+          "Documentación del Recetario API",
+        contact: {
+          name: "Eliana Kohon",
+        },
+      },
+      servers: [
+        {
+          url: "https://iawek-servicio-web.herokuapp.com",
+        },
+      ],
+    },
+    apis: ["./routes/index.js"],
+  };
+  
+  const specs = swaggerJsdoc(options);
+  app.use(
+    "/",
+    swaggerUi.serve,
+    swaggerUi.setup(specs)
+  );
  
