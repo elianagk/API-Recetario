@@ -1,10 +1,11 @@
 const express = require('express');
 const PORT = process.env.PORT || 5000
 const app = express();
+const cors = require('cors');
 
 app.use(express.json());
 app.use(require('./routes/index'));
-
+app.use(cors());
 app.listen(PORT);
 
 // Swagger
@@ -31,6 +32,7 @@ const options = {
     },
     apis: ["./routes/index.js"],
   };
+  
   
   const specs = swaggerJsdoc(options);
   app.use(
