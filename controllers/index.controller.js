@@ -26,6 +26,11 @@ const getUsers = async (req, res)=> {
 const getRecetas = async (req, res)=> {
    const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta');
    res.json(response.rows);
+   res.header('Access-Control-Allow-Origin','*');
+
+   res.header('Access-Control-Allow-Methods','GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+   res.header('Access-Control-Allow-Headers','Origin,Content-Type,X-Requested-With,Accept,Authorization');
    
  }
  const getReceta = async (req, res)=> {
