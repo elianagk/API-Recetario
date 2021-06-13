@@ -24,14 +24,18 @@ const getUsers = async (req, res)=> {
 }
 
 const getRecetas = async (req, res)=> {
-   const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta');
+   const response = await pool.query('SELECT * FROM receta');
+   response.rows.forEach(receta => {
+      receta.image = "https://iawek-servicio-web.herokuapp.com/receta/"+receta.id_receta+"/imagen"
+   })
    res.json(response.rows);
    
  }
  const getReceta = async (req, res)=> {
    try{
    const id = req.params.id_receta;
-   const response = await pool.query('SELECT id_receta, nombre, descripcion, recomendacion, comensales, tiempo_coccion, dificultad FROM receta WHERE id_receta = $1', [id]);
+   const response = await pool.query('SELECT * FROM receta WHERE id_receta = $1', [id]);
+   response.rows[0].image = "https://iawek-servicio-web.herokuapp.com/receta/"+id+"/imagen"
    res.json(response.rows);
    }catch(err){
       res.status(400).send({
