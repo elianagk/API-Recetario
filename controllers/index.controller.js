@@ -153,12 +153,14 @@ const getRecetas = async (req, res)=> {
       const response = await pool.query("SELECT encode(image,'base64') FROM receta where id_receta = $1", [req.params.id_receta]);
       var respuesta=Buffer.from(response.rows[0].encode,'base64');
       var rta=respuesta.toString('utf-8');
-      fs.writeFileSync('image.jpg', rta, function(err) {
+      let buff = Buffer.from(rta, 'base64');
+      fs.writeFileSync('image.jpg', buff, function(err) {
          console.log('File created');
       });
-      const mimeType = 'image/png';
-
-      res.send(rta);
+      const mimeType = 'image/jpg';
+            res.writeHead(200, { 'Content-Type': mimeType });
+            res.write(buff);
+            res.end();
    }catch(err){
       res.status(404).send({
           "name": "Not Found Exception",
