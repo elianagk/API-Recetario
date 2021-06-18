@@ -4,7 +4,7 @@ const router = Router();
 const { getUsers, getRecetas, getCategorias,getCategoria, getIngredientes,getIngrediente, 
     getRecetaIngrediente, getRecetaCategoria,  getImageReceta, getReceta, getCategoriaReceta, 
     getIngredienteReceta } = require('../controllers/index.controller')
-
+    
 router.get('/users', getUsers);
 /**
  * @swagger
