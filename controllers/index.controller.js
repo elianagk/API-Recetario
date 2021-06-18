@@ -25,9 +25,10 @@ const getUsers = async (req, res)=> {
 
 const getRecetas = async (req, res)=> {
    const response = await pool.query('SELECT * FROM receta');
-   response.rows.forEach(receta => {
+   response.rows.forEach(receta => { 
       receta.image = "https://iawek-servicio-web.herokuapp.com/receta/"+receta.id_receta+"/imagen"
    })
+   
    res.json(response.rows);
    
  }
