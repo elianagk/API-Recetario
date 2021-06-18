@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const router = Router();
-
+const cors = require('cors');
+app.use(cors())
 const { getUsers, getRecetas, getCategorias,getCategoria, getIngredientes,getIngrediente, 
     getRecetaIngrediente, getRecetaCategoria,  getImageReceta, getReceta, getCategoriaReceta, 
     getIngredienteReceta } = require('../controllers/index.controller')
